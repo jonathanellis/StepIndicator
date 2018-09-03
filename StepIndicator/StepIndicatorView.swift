@@ -19,8 +19,9 @@ public class StepIndicatorView: UIView {
     // Variables
     static let defaultColor = UIColor(red: 179.0/255.0, green: 189.0/255.0, blue: 194.0/255.0, alpha: 1.0)
     static let defaultTintColor = UIColor(red: 0.0/255.0, green: 180.0/255.0, blue: 124.0/255.0, alpha: 1.0)
-    private var annularLayers = [AnnularLayer]()
-    private var horizontalLineLayers = [LineLayer]()
+    
+    public var annularLayers = [AnnularLayer]()
+    public var horizontalLineLayers = [LineLayer]()
     private let containerLayer = CALayer()
     
     // MARK: - Properties

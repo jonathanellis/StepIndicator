@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LineLayer: CAShapeLayer {
+public class LineLayer: CAShapeLayer {
     
     private let tintLineLayer = CAShapeLayer()
     
@@ -34,7 +34,7 @@ class LineLayer: CAShapeLayer {
         self.lineWidth = 2
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

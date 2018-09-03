@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnnularLayer: CAShapeLayer {
+public class AnnularLayer: CAShapeLayer {
     
     private let fullCircleLayer = CAShapeLayer()
     private let centerCircleLayer = CAShapeLayer()
@@ -65,7 +65,7 @@ class AnnularLayer: CAShapeLayer {
         self.fullCircleLayer.addSublayer(self.flagLayer)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
