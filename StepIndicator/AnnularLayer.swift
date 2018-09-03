@@ -12,20 +12,22 @@ public class AnnularLayer: CAShapeLayer {
     
     private let fullCircleLayer = CAShapeLayer()
     private let centerCircleLayer = CAShapeLayer()
-    private let flagLayer = CALayer()
+    private let imageLayer = CALayer()
     private let annularPath = UIBezierPath()
     lazy private var centerTextLayer = CATextLayer()
     
     static private let originalScale = CATransform3DMakeScale(1.0, 1.0, 1.0)
-    static private let flagImageName = "CYStepIndicator_ic_done_white"
-    static private var flagCGImage:CGImage?
-    
     
     // MARK: - Properties
-    var tintColor:UIColor?
-    var displayNumber = false
+    public var tintColor:UIColor?
+    public var displayNumber = false
     var step:Int = 0
-    var annularDefaultColor: UIColor?
+    public var annularDefaultColor: UIColor?
+    public var image:UIImage? {
+        didSet {
+            self.imageLayer.contents = image?.cgImage
+        }
+    }
     
     var isCurrent:Bool = false {
         didSet{
@@ -33,7 +35,7 @@ public class AnnularLayer: CAShapeLayer {
         }
     }
     
-    var isFinished:Bool = false {
+    public var isFinished:Bool = false {
         didSet{
             self.updateStatus()
         }
@@ -47,22 +49,7 @@ public class AnnularLayer: CAShapeLayer {
         self.fillColor = UIColor.clear.cgColor
         self.lineWidth = 3
         
-        if AnnularLayer.flagCGImage == nil {
-            var flagImage = UIImage(named: AnnularLayer.flagImageName)
-            
-            //For Pods bundle
-            if flagImage == nil {
-                let bundle = Bundle(for: AnnularLayer.self)
-                if let url = bundle.url(forResource: "StepIndicator", withExtension: "bundle") {
-                    let bundle = Bundle(url: url)
-                    flagImage = UIImage(named: AnnularLayer.flagImageName, in: bundle, compatibleWith: nil)
-                }
-            }
-            AnnularLayer.flagCGImage = flagImage?.cgImage
-        }
-
-        self.flagLayer.contents = AnnularLayer.flagCGImage
-        self.fullCircleLayer.addSublayer(self.flagLayer)
+        self.fullCircleLayer.addSublayer(self.imageLayer)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -196,7 +183,7 @@ public class AnnularLayer: CAShapeLayer {
         
         let flagLayerWidth = self.fullCircleLayer.bounds.width * 0.8
         let flagLayerHeight = self.fullCircleLayer.bounds.height * 0.8
-        self.flagLayer.frame = CGRect(x: self.fullCircleLayer.bounds.width * 0.2 / 2.0, y: self.fullCircleLayer.bounds.height * 0.2 / 2.0, width:flagLayerWidth, height:flagLayerHeight)
+        self.imageLayer.frame = CGRect(x: self.fullCircleLayer.bounds.width * 0.2 / 2.0, y: self.fullCircleLayer.bounds.height * 0.2 / 2.0, width:flagLayerWidth, height:flagLayerHeight)
         
         self.animateFullCircle()
     }
