@@ -14,7 +14,6 @@ public enum StepIndicatorViewDirection:UInt {
 }
 
 
-@IBDesignable
 public class StepIndicatorView: UIView {
     
     // Variables
@@ -31,13 +30,13 @@ public class StepIndicatorView: UIView {
         }
     }
     
-    @IBInspectable public var numberOfSteps: Int = 5 {
+    public var numberOfSteps: Int = 5 {
         didSet {
             self.createSteps()
         }
     }
     
-    @IBInspectable public var currentStep: Int = -1 {
+    public var currentStep: Int = -1 {
         didSet{
             if self.annularLayers.count <= 0 {
                 return
@@ -48,55 +47,55 @@ public class StepIndicatorView: UIView {
         }
     }
     
-    @IBInspectable public var displayNumbers: Bool = false {
+    public var displayNumbers: Bool = false {
         didSet {
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var circleRadius:CGFloat = 10.0 {
+    public var circleRadius:CGFloat = 10.0 {
         didSet{
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var circleColor:UIColor = defaultColor {
+    public var circleColor:UIColor = defaultColor {
         didSet {
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var circleTintColor:UIColor = defaultTintColor {
+    public var circleTintColor:UIColor = defaultTintColor {
         didSet {
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var circleStrokeWidth:CGFloat = 3.0 {
+    public var circleStrokeWidth:CGFloat = 3.0 {
         didSet{
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var lineColor:UIColor = defaultColor {
+    public var lineColor:UIColor = defaultColor {
         didSet {
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var lineTintColor:UIColor = defaultTintColor {
+    public var lineTintColor:UIColor = defaultTintColor {
         didSet {
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var lineMargin:CGFloat = 4.0 {
+    public var lineMargin:CGFloat = 4.0 {
         didSet{
             self.updateSubLayers()
         }
     }
     
-    @IBInspectable public var lineStrokeWidth:CGFloat = 2.0 {
+    public var lineStrokeWidth:CGFloat = 2.0 {
         didSet{
             self.updateSubLayers()
         }
@@ -108,7 +107,7 @@ public class StepIndicatorView: UIView {
         }
     }
     
-    @IBInspectable var directionRaw: UInt {
+    var directionRaw: UInt {
         get{
             return self.direction.rawValue
         }
