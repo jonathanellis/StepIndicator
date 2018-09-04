@@ -151,6 +151,11 @@ public class StepIndicatorView: UIView {
         self.setCurrentStep(step: self.currentStep)
     }
     
+    public override func layoutSubviews() {
+        updateSubLayers()
+        super.layoutSubviews()
+    }
+    
     private func updateSubLayers() {
         self.containerLayer.frame = self.layer.bounds
         
