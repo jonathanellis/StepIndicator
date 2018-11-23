@@ -135,7 +135,7 @@ public class AnnularLayer: CAShapeLayer {
         self.centerTextLayer.position = CGPoint(x: self.bounds.midX, y: self.bounds.midY * 1.2)
         self.centerTextLayer.contentsScale = UIScreen.main.scale
         self.centerTextLayer.foregroundColor = self.strokeColor
-        self.centerTextLayer.alignmentMode = kCAAlignmentCenter
+        self.centerTextLayer.alignmentMode = CATextLayerAlignmentMode.center
         let fontSize = sideLength * 0.65
         self.centerTextLayer.font = UIFont.boldSystemFont(ofSize: fontSize) as CFTypeRef
         self.centerTextLayer.fontSize = fontSize
@@ -163,7 +163,7 @@ public class AnnularLayer: CAShapeLayer {
         let animation = CABasicAnimation()
         animation.keyPath = "transform"
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = CAMediaTimingFillMode.forwards
         animation.toValue = CATransform3DMakeScale(x, y, 1)
         return animation
     }
